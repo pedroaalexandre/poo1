@@ -50,34 +50,37 @@ public class Main{
 
             int posicao = s.nextInt();      //Variável para definir a posição de acordo com a tabela referencial
 
-            if(jogador == 1 && posicao == 1 || jogador == 2 && posicao == 1) {
-                tabuleiro[0][0] = jogador;
-            }else if(jogador == 1 && posicao == 2 || jogador == 2 && posicao == 2) {
-                tabuleiro[0][1] = jogador;
-            }else if(jogador == 1 && posicao == 3 || jogador == 2 && posicao == 3) {
-                tabuleiro[0][2] = jogador;
-            }else if(jogador == 1 && posicao == 4 || jogador == 2 && posicao == 4) {
-                tabuleiro[1][0] = jogador;
-            }else if(jogador == 1 && posicao == 5 || jogador == 2 && posicao == 5) {
-                tabuleiro[1][1] = jogador;
-            }else if(jogador == 1 && posicao == 6 || jogador == 2 && posicao == 6) {
-                tabuleiro[1][2] = jogador;                
-            }else if(jogador == 1 && posicao == 7 || jogador == 2 && posicao == 7) {
-                tabuleiro[2][0] = jogador; 
-            }else if(jogador == 1 && posicao == 8 || jogador == 2 && posicao == 8) {
-                tabuleiro[2][1] = jogador;
-            }else if(jogador == 1 && posicao == 9 || jogador == 2 && posicao == 9) {
-                tabuleiro[2][2] = jogador;
-            }
+            boolean validar = validacao(posicao, tabuleiro);
 
-            if(validacao(posicao, tabuleiro) == false) {    //Chamada da posição de validação
-                restricao();
-                interfaceJogo(jogador, tabuleiro);         //Se a posição for inválida, chama a função restricao
+            if(validar == false) {     //Chamada da posição de validação
+                restricao();                                //Se a posição for inválida, chama a função restricao
+                interfaceJogo(jogador, tabuleiro);
             }else{
+                if(jogador == 1 && posicao == 1 || jogador == 2 && posicao == 1) {
+                    tabuleiro[0][0] = jogador;
+                }else if(jogador == 1 && posicao == 2 || jogador == 2 && posicao == 2) {
+                    tabuleiro[0][1] = jogador;
+                }else if(jogador == 1 && posicao == 3 || jogador == 2 && posicao == 3) {
+                    tabuleiro[0][2] = jogador;
+                }else if(jogador == 1 && posicao == 4 || jogador == 2 && posicao == 4) {
+                    tabuleiro[1][0] = jogador;
+                }else if(jogador == 1 && posicao == 5 || jogador == 2 && posicao == 5) {
+                    tabuleiro[1][1] = jogador;
+                }else if(jogador == 1 && posicao == 6 || jogador == 2 && posicao == 6) {
+                    tabuleiro[1][2] = jogador;                
+                }else if(jogador == 1 && posicao == 7 || jogador == 2 && posicao == 7) {
+                    tabuleiro[2][0] = jogador; 
+                }else if(jogador == 1 && posicao == 8 || jogador == 2 && posicao == 8) {
+                    tabuleiro[2][1] = jogador;
+                }else if(jogador == 1 && posicao == 9 || jogador == 2 && posicao == 9) {
+                    tabuleiro[2][2] = jogador;
+                }
+
                 vitoria(tabuleiro);
-                jogador = (jogador == 1) ?  2 : 1;      //Função ternária para alternar entre jogador1 e jogador2
+                jogador = (jogador == 1) ?  2 : 1;          //Função ternária para alternar entre jogador1 e jogador2
                 interfaceJogo(jogador, tabuleiro);
             }
+
         }
         return 0;
     }
@@ -106,7 +109,7 @@ public class Main{
         }
     }
 
-    static boolean vitoria(int tabuleiro[][]) {
+    static boolean vitoria(int [][]tabuleiro) {
         if(tabuleiro[0][0] == 1 && tabuleiro[0][1] == 1 && tabuleiro[0][2] == 1 || tabuleiro[1][0] == 1 && tabuleiro [1][1] == 1 && tabuleiro [1][2] == 1 || tabuleiro[2][0] == 1 && tabuleiro [2][1] == 1 && tabuleiro[2][2] == 1) {
             System.out.println("O Jogador 'X' venceu!");
             return true;
