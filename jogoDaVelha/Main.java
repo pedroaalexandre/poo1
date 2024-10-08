@@ -20,7 +20,7 @@ public class Main{
     static int interfaceJogo (int jogador, int[][] tabuleiro) {
         Scanner s = new Scanner(System.in);
 
-        while(vitoria(tabuleiro) == false) {
+        while(vitoria(tabuleiro) == false ) {
             System.out.println("Tabuleiro atual:");
 
             for(int i = 0; i < tabuleiro.length; i++) {     //Imprmir o tabuleiro ("-" se for 0, "X" se for 1 e "O" se for 2)
@@ -133,7 +133,7 @@ public class Main{
                 return false;
             }else{
                 System.out.println("Deu velha!");
-                return false;
+                return true;
             }
         }
     }
