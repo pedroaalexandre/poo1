@@ -14,12 +14,12 @@ public class EGrau2 {
     }
 
     public double calculaX1(double d){
-        double x1 = (-b + Math.sqrt(d))/2*a;
+        double x1 = (-b + Math.sqrt(d))/(2*a);
         return x1;
     }
 
     public double calculaX2(double d){
-        double x2 = (-b - Math.sqrt(d))/2*a;
+        double x2 = (-b - Math.sqrt(d))/(2*a);
         return x2;
     }
 }
