@@ -24,8 +24,8 @@ public class App {
 
             x2 = EGrau2.calculaX2(d);
 
-            if(d <= 0){
-                System.out.println("O delta é menor ou igual a 0. Não existem raízes reais!");
+            if(d < 0){
+                System.out.println("O delta é menor que 0. Não existem raízes reais!");
             }else{
                 System.out.println(exibe(x1, x2));
                 System.out.println();   
