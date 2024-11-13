@@ -1,0 +1,3 @@
+Quando se coloca o atributo nome como private, o programa dá o erro "The field JogadorDeFutebol.nome is not visible", ou seja, ele fica com a visibilidade limitada somente à classe que ele está, sendo impossível passar para outra classe.
+
+Assim, é necessário fazer um get set para o atributo "nome", para que os valores consigam ser passados.
