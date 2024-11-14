@@ -1,8 +1,11 @@
+package retas.etapa3;
+
 public class Retas {
     private double x1;
     private double y1;
     private double x2;
     private double y2;
+    public static int cont;
 
     public Retas(double x1, double y1, double x2, double y2){
         this.x1 = x1;
@@ -15,8 +18,17 @@ public class Retas {
         double x = Math.pow(x1 - x2,2);
         double y = Math.pow(y1 - y2, 2);
         double result = Math.sqrt(x + y);
+        cont += 1;
 
         return result;
+    }
+
+    public static boolean valida(double x1, double y1, double x2, double y2){
+        if(x1 == x2 && y1 == y2){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public String exibe () {
@@ -53,5 +65,13 @@ public class Retas {
 
     public void setY2(double y2) {
         this.y2 = y2;
+    }
+
+    public static int getCont() {
+        return cont;
+    }
+
+    public static void setCont(int cont) {
+        Retas.cont = cont;
     }
 }

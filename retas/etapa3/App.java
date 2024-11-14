@@ -1,4 +1,4 @@
-package retas.etapa2;
+package retas.etapa3;
 
 import java.util.Scanner;
 
@@ -38,9 +38,9 @@ public class App {
             x2 = leCoordenada(3);
             y2 = leCoordenada(4);
 
-            Retas.valida(x1, y1, x2, y2);
+            Validacao.validacao(x1, y1, x2, y2);
 
-            if(Retas.valida(x1, y1, x2, y2) == false){
+            if(Validacao.validacao(x1, y1, x2, y2) == false){
                 System.out.println("Não é uma reta!");
             }else{
                 Retas retas = new Retas(0, 0, 0, 0);
