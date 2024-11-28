@@ -24,13 +24,9 @@ public class App {
                 System.out.println(add.exibeFloat(dados1.getC(), dados1.getD(), add.addFloat(dados1.getC(), dados1.getD())));
                 System.out.println();
 
-            }else{
-                if(opcao != 3){
-                    System.out.println("Opção inválida. Tente novamente:");
-                    System.out.println();
-                }else{
-
-                }
+            }else if(opcao != 3){
+                System.out.println("Opção inválida. Tente novamente:");
+                System.out.println();
             }    
         } while (opcao != 3);
     }

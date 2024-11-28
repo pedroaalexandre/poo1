@@ -7,7 +7,7 @@ public class App {
         Scanner s = new Scanner(System.in);
         Adicao1 add = new Adicao1();
 
-        int opcao;
+        int opcao = 0;
 
         do {
             System.out.println("Menu:\n1 - Inteiro\n2 - Reais\n3 - Sair");
@@ -19,7 +19,7 @@ public class App {
                     Dados1 dados1 = new Dados1(2, 3);
                     System.out.println(add.exibe(dados1.getA(), dados1.getB(), add.add(dados1.getA(), dados1.getB())));
                     System.out.println();
-            
+                    break;
                 case 2:
                     dados1 = new Dados1(2.5f,3.5f);
                     System.out.println(add.exibe(dados1.getC(), dados1.getD(), add.add(dados1.getC(), dados1.getD())));
