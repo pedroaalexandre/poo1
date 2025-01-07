@@ -23,7 +23,6 @@ public class Aluno {
         this.telefone = telefone;
         this.acessos = acessos;
         this.categoria = categoria;
-        Academia.acessos++;
     }
 
     public String exibe() {
@@ -33,5 +32,22 @@ public class Aluno {
     public String exibe(int categoria) {
         return "Código: " + codigo + "\nNome: " + nome + "\nTelefone: " + telefone + "\nCategoria: " + categoria + "\nAcessos: " + acessos;
     }
+
+    public void incrementarAcesso() {
+        this.acessos++;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public int getAcessos() {
+        return acessos;
+    }
+
 
 }

@@ -49,11 +49,13 @@ public class App {
                         int opcaoSubMenu = 0;
 
                         while (opcaoSubMenu != 3) {
+                            System.out.println();
                             System.out.print(subMenu());
                             opcaoSubMenu = s.nextInt();
                             s.nextLine();
 
                             if(opcaoSubMenu == 1) {
+                                System.out.println();
                                 System.out.print("Código do aluno: ");
                                 String codigo = Utilitaria.gerarCodigo();
                                 System.out.println(codigo);
@@ -77,10 +79,15 @@ public class App {
                                     int acessos = s.nextInt();
     
                                     alunos.add(new Aluno(codigo, nome, telefone, acessos, categoria));
+                                    Academia academia = new Academia();
+                                    academia.atualiza(alunos.size());
+                                    Academia.acessos += acessos;
     
                                 }else{
     
                                     alunos.add(new Aluno(codigo, nome, telefone, categoria));
+                                    Academia academia = new Academia();
+                                    academia.atualiza(alunos.size());
     
                                 }
     
@@ -100,7 +107,58 @@ public class App {
                 }
                 
             } else if (opcao == 2) {
-                System.out.println("Hello world!");
+                boolean encontrado = false;
+                System.out.print("Código do aluno: ");
+                String codAluno = s.nextLine();
+
+                for (Aluno aluno : alunos) { 
+                    if (aluno.getCodigo().equals(codAluno)) { 
+                        encontrado = true; 
+                        break;
+                    }
+                }
+                
+                if(encontrado == true){
+                    for(int i = 0; i < alunos.size(); i++) {
+
+                        if(alunos.get(i).getCodigo().equals(codAluno) && encontrado == true) {
+                            if(alunos.get(i).getCategoria() != 1) {
+                                if(alunos.get(i).getCategoria() == 2 && alunos.get(i).getAcessos() == 1){
+                                    System.out.println(alunos.get(i).exibe(alunos.get(i).getCategoria()));
+                                    System.out.println("Sem mais aulas gratuitas disponíveis");
+                                    System.out.println();
+
+                                }else if(alunos.get(i).getCategoria() == 2 && alunos.get(i).getAcessos() < 1){
+                                    alunos.get(i).incrementarAcesso();
+                                    System.out.println(alunos.get(i).exibe(alunos.get(i).getCategoria()));
+                                    Academia.acessos++;
+                                    System.out.println();
+
+                                }else if(alunos.get(i).getCategoria() == 3 && alunos.get(i).getAcessos() == 2){
+                                    System.out.println(alunos.get(i).exibe(alunos.get(i).getCategoria()));
+                                    System.out.println("Sem mais aulas gratuitas disponíveis");
+                                    System.out.println();
+                                    
+                                }else if(alunos.get(i).getCategoria() == 3 && alunos.get(i).getAcessos() < 2){
+                                    alunos.get(i).incrementarAcesso();
+                                    System.out.println(alunos.get(i).exibe(alunos.get(i).getCategoria()));
+                                    Academia.acessos++;
+                                    System.out.println();
+                                }
+
+                    
+                            }else{
+                                System.out.println(alunos.get(i).exibe());
+                                System.out.println("Sem direito a aulas gratuitas com personal.");
+                                System.out.println();
+                            }
+                            break;
+                        }
+                    }
+                }else{
+                    System.out.println("Aluno não cadastrado.");
+                    System.out.println();
+                }
             }
         }
     }
@@ -116,6 +174,8 @@ public class App {
     }
 
     public static void imprimirLista(List<Aluno> lista) {
+        System.out.println("    RELATÓRIO   ");
+        System.out.println();
         for (Aluno aluno : lista) {
             if(aluno.categoria != 1) {
                 System.out.println(aluno.exibe(aluno.categoria));
@@ -125,5 +185,8 @@ public class App {
                 System.out.println();
             }
         }
+        System.out.println("TOTAL DE ALUNOS: " + lista.size());
+        System.out.println("ACESSOS: " + Academia.acessos);
+        System.out.println();
     }
 }
