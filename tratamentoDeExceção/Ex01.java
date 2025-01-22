@@ -1,30 +1,32 @@
 import java.util.Scanner;
 
 public class Ex01 {
+    public static final String SENHAMASTER = "Pedro@123";
     public static void main (String[]args) {
+        Scanner s = new Scanner(System.in);
 
-        String senhaValidacao = "Pedro@123";
         boolean tentativa = true;
 
         do {
+
             try {
-                senhaCorreta(senhaValidacao);
+                System.out.print("Digite a sua senha: ");
+                String password = s.nextLine();
+
+                validarSenha(password);
+
+                System.out.println("Senha correta!"); 
                 tentativa = false;
             } catch (Exception e) {
-                System.err.println("Senha incorreta!\n\n");
+                System.err.println(e.getMessage());
             }
+
         } while (tentativa);
     }
 
-    public static void senhaCorreta(String senhaValidacao) {
-        Scanner s = new Scanner(System.in);
-        System.out.print("Digite a sua senha: ");
-        String password = s.nextLine();
-
-        if(senhaValidacao.equals(password)) {
-           System.out.println("Senha correta!"); 
-        }else{
-            throw new SecurityException("Senha incorreta!");
+    public static void validarSenha(String password) throws Exception {
+        if(!password.equals(SENHAMASTER)) {
+            throw new Exception("Senha incorreta!");
         }
     }
 }

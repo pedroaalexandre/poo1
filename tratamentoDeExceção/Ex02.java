@@ -13,7 +13,7 @@ public class Ex02 {
 
             System.out.printf("R$ %.2f sacados com sucesso!", valorSaque);
         } catch (ArithmeticException e) {
-            System.err.println("O saque não pode ultrapassar R$ 2000.00.\n");
+            System.err.println(e.getMessage());
         }
     }
 
